@@ -27,7 +27,7 @@ app.set('view engine', 'hbs')
 const { MONGO_URL = 'mongodb+srv://admin:admin@12345678@nordic-shop-demo-agmy0.mongodb.net/nordic-shop?retryWrites=true&w=majority' } = process.env
 
 mongoose
-  .connect(MONGO_URL)
+  .connect(MONGO_URL, { useNewUrlParser:true})
   .then(() => {
     console.log('connect success')
   })
