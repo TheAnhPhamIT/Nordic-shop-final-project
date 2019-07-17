@@ -30,7 +30,17 @@ mongoose
     return Category.insertMany(categories.body)
   })
   .then(() => {
-    return User.insertMany(users.body)
+    let newUsers = users.body.map(user => {
+      let newDOB = date.format(new Date(user.dob), 'DD/MM/YYYY')
+      delete user.dob
+      delete user.id
+      return {
+        ...user,
+        _id: new mongoose.mongo.ObjectID(),
+        dob: newDOB,
+      }
+    })
+    return User.insertMany(newUsers)
   })
   .then(() => {
     process.exit(0)
