@@ -39,7 +39,7 @@ const UserSchema = new Schema({
   },
   firstName: { type: String, required: true,},
   lastName: { type: String, required: true,}, 
-  dob: Date,
+  dob: String,
   gender: {
     type: String,
     emum: ['male', 'female'],
