@@ -89,10 +89,7 @@ exports.updateProduct = (req, res) => {
       .equals(req.params.id)
       .exec()
       .then(() => {
-        res.redirect(`/admin/products/${req.params.id}`, {
-          userName: req.session.name,
-          userAvatar: req.session.avatar,
-        })
+        res.redirect(`/admin/products/${req.params.id}`)
       })
   } else {
     res.redirect('/')
@@ -107,10 +104,7 @@ exports.deleteProduct = (req, res) => {
       .equals(req.params.id)
       .exec()
       .then(() => {
-        res.redirect('/admin/products', {
-          userName: req.session.name,
-          userAvatar: req.session.avatar,
-        })
+        res.redirect('/admin/products')
       })
   } else {
     res.redirect('/')
@@ -124,10 +118,7 @@ exports.createNewProduct = (req, res) => {
     productDetails.image = req.file.originalname
 
     productModel.create(productDetails).then(() => {
-      res.redirect('/admin/products', {
-        userName: req.session.name,
-        userAvatar: req.session.avatar,
-      })
+      res.redirect('/admin/products')
     })
   } else {
     res.redirect('/')
