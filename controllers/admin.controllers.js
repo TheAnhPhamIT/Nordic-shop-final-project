@@ -114,8 +114,8 @@ exports.deleteProduct = (req, res) => {
 exports.createNewProduct = (req, res) => {
   if (req.session.authenticated) {
     const productDetails = req.body
-    productDetails.thumbnail = `/uploads/${req.file.originalname}`
-    productDetails.image = `/uploads/${req.file.originalname}`
+    productDetails.thumbnail = req.file.originalname
+    productDetails.image = req.file.originalname
 
     productModel.create(productDetails).then(() => {
       res.redirect('/admin/products')
